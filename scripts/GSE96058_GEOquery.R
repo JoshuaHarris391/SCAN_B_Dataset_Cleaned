@@ -112,7 +112,7 @@ for (clin_var in colnames(GSE96058_Clinical_DF)) {
   
   if (class(GSE96058_Clinical_DF[, clin_var]) == "factor") {
     var_levels <- levels(GSE96058_Clinical_DF[, clin_var])
-    write(var_levels, file = paste("./data/GSE96058/clean/clinical_variable_factors", clin_var, ".txt", sep = ""))
+    write(var_levels, file = paste("./data/GSE96058/clean/clinical_variable_factors/", clin_var, ".txt", sep = ""))
   }
 }
 
