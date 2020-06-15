@@ -71,22 +71,17 @@ Integer_Vars  <- c("ER_STATUS", "PGR_STATUS", "HER2_STATUS", "KI67_STATUS", "ER_
                    "HER2_PREDICTION_MGC", "KI67_PREDICTION_MGC", "ER_PREDICTION_SGC", "PGR_PREDICTION_SGC", "HER2_PREDICTION_SGC", 
                    "KI67_PREDICTION_SGC", "OVERALL_SURVIVAL_EVENT", "ENDOCRINE_TREATED", "CHEMO_TREATED")
 for (Integer in Integer_Vars) {
-  GSE96058_Clinical_DF[, Integer] <- as.integer(GSE96058_Clinical_DF[, Integer])
+  GSE96058_Clinical_DF[, Integer] <-  GSE96058_Clinical_DF[, Integer] %>% as.character() %>%  as.integer()
 }
 
 
 
 Numeric_Vars <-  c("AGE_AT_DIAGNOSIS", "TUMOR_SIZE", "OVERALL_SURVIVAL_DAYS")
 for (Numeric in Numeric_Vars) {
-  GSE96058_Clinical_DF[, Numeric] <- as.numeric(GSE96058_Clinical_DF[, Numeric])
+  GSE96058_Clinical_DF[, Numeric] <- GSE96058_Clinical_DF[, Numeric] %>% as.character() %>%  as.numeric()
 }
 
 
-
-# Converting clinical variables values (0 = neg 1 = pos)
-for (Integer in Integer_Vars) {
-  GSE96058_Clinical_DF[, Integer] <- (GSE96058_Clinical_DF[, Integer] - 1) %>% as.integer()
-}
 
 # Converting receptor status to factored character
 receptor_status_vars  <- c("ER_STATUS", "PGR_STATUS", "HER2_STATUS", "KI67_STATUS", "ER_PREDICTION_MGC", "PGR_PREDICTION_MGC", 
